@@ -55,8 +55,6 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          run: yarn predeploy
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -70,7 +68,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: ${{ steps.detect-package-manager.outputs.runner }} run predeploy
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
