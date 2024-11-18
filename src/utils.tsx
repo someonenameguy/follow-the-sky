@@ -16,7 +16,8 @@ export const FaSvgIcon = ({ faIcon, ...rest }: any) => {
 
 export const findHandle = (s: string | undefined) => {
    if (s == null) return
-   const match = s.match(/(\S+(?:\.| dot )bsky(?:\.| dot )social)|(?:b|blue)s(?:ky)?\W*?(\w+?\b)/i)
+   const match = s.match(/(?:(\S+)(?:\.| dot )bsky(?:\.| dot )social)|(?:b|blue)s(?:ky)?\W*?(\w+?)\b/i)
    if (match == null) return
-   return match[1].replaceAll(' dot ', '.')
+   if (match[1] == null) return match[1].replaceAll(' dot ', '.')
+   return match[2]
 }
