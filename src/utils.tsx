@@ -18,6 +18,6 @@ export const findHandle = (s: string | undefined) => {
    if (s == null) return
    const match = s.match(/(?:(\S+)(?:\.| dot )bsky(?:\.| dot )social)|(?:b|blue)s(?:ky)?\W*?(\w+?)\b/i)
    if (match == null) return
-   if (match[1] == null) return match[1].replaceAll(' dot ', '.')
-   return match[2]
+   if (match[1] == undefined) return match[2]
+   return match[1].replaceAll(' dot ', '.')
 }
